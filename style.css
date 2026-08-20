@@ -137,6 +137,16 @@ body {
     display: flex;
     gap: 8px;
 }
+.exec-summary {
+    margin: 10px 24px 0;
+    padding: 10px 12px;
+    background: rgba(106,169,255,0.1);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-2);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--ink);
+}
 .stopnav a {
     color: var(--ink-dim);
     text-decoration: none;

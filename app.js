@@ -61,6 +61,11 @@
             s.classList.toggle('hidden-track', hide);
             if (hide) s.classList.remove('active');
         });
+        document.querySelectorAll('[data-track]:not(.stop)').forEach((el) => {
+            const track = el.dataset.track || 'full';
+            const hide = mode === 'all' ? false : track !== mode;
+            el.classList.toggle('hidden-track', hide);
+        });
         rebuildNav();
         setToggleActive(mode);
         const first = visibleStops()[0];
