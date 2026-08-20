@@ -229,7 +229,12 @@
 
     // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        const inEditable =
+            e.target.tagName === 'INPUT' ||
+            e.target.tagName === 'TEXTAREA' ||
+            e.target.isContentEditable === true ||
+            (typeof e.target.closest === 'function' && e.target.closest('[contenteditable="true"]'));
+        if (inEditable) return;
         if (e.key === ' ') { e.preventDefault(); running ? pause() : start(); }
         if (e.key === 'r' || e.key === 'R') reset();
         if (e.key === 'j' || e.key === 'ArrowDown') scrollToNextStop(1);
