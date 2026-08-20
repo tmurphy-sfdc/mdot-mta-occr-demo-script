@@ -147,6 +147,14 @@ body {
     font-size: 13px;
     color: var(--ink);
 }
+.is-editing [contenteditable="true"] {
+    outline: 1px dashed var(--accent-2);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+[contenteditable="true"]:focus {
+    background: rgba(106,169,255,0.12);
+}
 .stopnav a {
     color: var(--ink-dim);
     text-decoration: none;

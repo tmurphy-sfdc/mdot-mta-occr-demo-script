@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+    const EDIT_STATE_KEY = 'mta-demo-script-edits-v1';
 
     // ============== Build nav from stops ==============
     const stops = Array.from(document.querySelectorAll('.stop'));
@@ -27,6 +28,65 @@
         });
     }
     rebuildNav();
+
+    // ============== Edit mode ==============
+    const btnEditMode = document.getElementById('btnEditMode');
+    const btnSaveEdits = document.getElementById('btnSaveEdits');
+    const btnResetEdits = document.getElementById('btnResetEdits');
+    const editableNodes = Array.from(document.querySelectorAll(
+        '.stop-meta h2, .stop-time, .say p, .do p, .do li, .transition, .exec-summary, .hero-list li, .cut-list li, .prompt-hint, .prompt-label, .prompt-block pre'
+    ));
+    let editModeOn = false;
+
+    editableNodes.forEach((node, idx) => {
+        node.dataset.editKey = `editable-${idx}`;
+    });
+
+    function setEditMode(enabled) {
+        editModeOn = enabled;
+        document.body.classList.toggle('is-editing', enabled);
+        editableNodes.forEach((node) => {
+            node.setAttribute('contenteditable', enabled ? 'true' : 'false');
+        });
+        btnEditMode.textContent = enabled ? 'Disable Edit Mode' : 'Enable Edit Mode';
+        btnEditMode.classList.toggle('primary', enabled);
+    }
+
+    function saveEdits() {
+        const payload = {};
+        editableNodes.forEach((node) => {
+            payload[node.dataset.editKey] = node.innerHTML;
+        });
+        try {
+            localStorage.setItem(EDIT_STATE_KEY, JSON.stringify(payload));
+        } catch (e) {}
+    }
+
+    function loadEdits() {
+        try {
+            const raw = localStorage.getItem(EDIT_STATE_KEY);
+            if (!raw) return;
+            const payload = JSON.parse(raw);
+            editableNodes.forEach((node) => {
+                const key = node.dataset.editKey;
+                if (Object.prototype.hasOwnProperty.call(payload, key)) {
+                    node.innerHTML = payload[key];
+                }
+            });
+        } catch (e) {}
+    }
+
+    function resetEdits() {
+        if (!confirm('Reset all local text edits on this page?')) return;
+        localStorage.removeItem(EDIT_STATE_KEY);
+        location.reload();
+    }
+
+    btnEditMode.addEventListener('click', () => setEditMode(!editModeOn));
+    btnSaveEdits.addEventListener('click', saveEdits);
+    btnResetEdits.addEventListener('click', resetEdits);
+    loadEdits();
+    setEditMode(false);
 
     // ============== Scroll spy ==============
     const observer = new IntersectionObserver((entries) => {
