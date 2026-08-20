@@ -24,9 +24,14 @@
     </header>
 
     <nav class="stopnav" id="stopNav"></nav>
+    <div class="view-toggle">
+        <button class="btn primary" id="btnViewAll">Show Both</button>
+        <button class="btn" id="btnViewExec">Executive Only</button>
+        <button class="btn" id="btnViewFull">Full Only</button>
+    </div>
 
     <main class="stops">
-        <section class="stop" id="exec-0">
+        <section class="stop" id="exec-0" data-track="exec">
             <div class="stop-head">
                 <div class="stop-number">E0</div>
                 <div class="stop-meta">
@@ -43,11 +48,12 @@
             </div>
             <div class="say">
                 <p>Today we're solving a connected workflow problem: fragmented tools, manual intake, and uneven closure operations. The outcome target is faster, more consistent rider resolution with system-level accountability.</p>
+                <p class="pause-cue">[PAUSE]</p>
             </div>
             <div class="transition"><span class="t-tag">→</span>Show the rider-facing front door and transparency model.</div>
         </section>
 
-        <section class="stop" id="exec-1">
+        <section class="stop" id="exec-1" data-track="exec">
             <div class="stop-head">
                 <div class="stop-number">E1</div>
                 <div class="stop-meta">
@@ -67,12 +73,14 @@
                 </div>
             </div>
             <div class="say">
-                <p>Riders can submit structured feedback and securely check status without calling in. That improves trust and reduces avoidable contact volume.</p>
+                <p>Riders can submit structured feedback and securely check status without calling in.</p>
+                <p>That improves trust and reduces avoidable contact volume.</p>
+                <p class="pause-cue">[PAUSE]</p>
             </div>
             <div class="transition"><span class="t-tag">→</span>Shift to the voice-channel path, which is a core part of your target-state architecture.</div>
         </section>
 
-        <section class="stop" id="exec-2">
+        <section class="stop" id="exec-2" data-track="exec">
             <div class="stop-head">
                 <div class="stop-number">E2</div>
                 <div class="stop-meta">
@@ -88,12 +96,14 @@
                 </div>
             </div>
             <div class="say">
-                <p>This is the phone-channel proof point: voice interaction, guided intake, and operational context all in one workflow while the rider is still on the call.</p>
+                <p>This is the phone-channel proof point.</p>
+                <p>Voice interaction, guided intake, and operational context all run in one workflow while the rider is still on the call.</p>
+                <p class="pause-cue">[PAUSE]</p>
             </div>
             <div class="transition"><span class="t-tag">→</span>Move directly to closure quality on the target case.</div>
         </section>
 
-        <section class="stop hero" id="exec-3">
+        <section class="stop hero" id="exec-3" data-track="exec">
             <div class="stop-head">
                 <div class="stop-number">E3</div>
                 <div class="stop-meta">
@@ -109,12 +119,14 @@
                 </div>
             </div>
             <div class="say">
-                <p>Closure language is regenerated from current evidence, edited in place, and saved back to the case. That turns closure quality into a repeatable, auditable process.</p>
+                <p>Closure language is regenerated from current evidence, edited in place, and saved back to the case.</p>
+                <p>That turns closure quality into a repeatable, auditable process.</p>
+                <p class="pause-cue">[PAUSE]</p>
             </div>
             <div class="transition"><span class="t-tag">→</span>Show outbound communication consistency.</div>
         </section>
 
-        <section class="stop" id="exec-4">
+        <section class="stop" id="exec-4" data-track="exec">
             <div class="stop-head">
                 <div class="stop-number">E4</div>
                 <div class="stop-meta">
@@ -135,7 +147,7 @@
             <div class="transition"><span class="t-tag">→</span>Finish with leadership value and handoff.</div>
         </section>
 
-        <section class="stop" id="exec-5">
+        <section class="stop" id="exec-5" data-track="exec">
             <div class="stop-head">
                 <div class="stop-number">E5</div>
                 <div class="stop-meta">
@@ -149,7 +161,7 @@
             </div>
         </section>
 
-        <section class="stop" id="full-intro">
+        <section class="stop" id="full-intro" data-track="full">
             <div class="stop-head">
                 <div class="stop-number">F</div>
                 <div class="stop-meta">
@@ -163,7 +175,7 @@
             </div>
         </section>
 
-        <section class="stop" id="stop-0">
+        <section class="stop" id="stop-0" data-track="full">
             <div class="stop-head">
                 <div class="stop-number">F0</div>
                 <div class="stop-meta">
@@ -187,14 +199,17 @@
             </div>
 
             <div class="say">
-                <p>So before I click anything, I want to sort of anchor this in your words first. The challenge isn't one bug in one screen, it's kind of a chain: fragmented tools, manual phone intake, manual SME routing, and then closure quality that's hard to measure after the fact. The vision you gave us was really clear: reduce resolution drag, increase trust, and enforce accountability in-system.</p>
+                <p>So before I click anything, I want to anchor this in your words first.</p>
+                <p>The challenge is a chain: fragmented tools, manual phone intake, manual SME routing, and closure quality that's hard to measure after the fact.</p>
+                <p>The vision is clear: reduce resolution drag, increase trust, and enforce accountability in-system.</p>
+                <p class="pause-cue">[PAUSE]</p>
                 <p><strong>Payoff:</strong> <strong>We're solving a workflow system problem, not just adding another form.</strong></p>
             </div>
 
             <div class="transition"><span class="t-tag">→</span>Now let's show the rider-facing front door and how that data enters the same operating model.</div>
         </section>
 
-        <section class="stop" id="stop-1">
+        <section class="stop" id="stop-1" data-track="full">
             <div class="stop-head">
                 <div class="stop-number">F1</div>
                 <div class="stop-meta">
@@ -224,7 +239,7 @@
             <div class="transition"><span class="t-tag">→</span>Next, we prove transparency with secure status tracking using the same record stream.</div>
         </section>
 
-        <section class="stop" id="stop-2">
+        <section class="stop" id="stop-2" data-track="full">
             <div class="stop-head">
                 <div class="stop-number">F2</div>
                 <div class="stop-meta">
@@ -253,7 +268,7 @@
             <div class="transition"><span class="t-tag">→</span>Now let's shift channels to the voice path, because that's a big part of your target solution.</div>
         </section>
 
-        <section class="stop" id="stop-3">
+        <section class="stop" id="stop-3" data-track="full">
             <div class="stop-head">
                 <div class="stop-number">F3</div>
                 <div class="stop-meta">
@@ -286,7 +301,7 @@
             <div class="transition"><span class="t-tag">→</span>With intake complete, we move into SME investigation and evidence assembly.</div>
         </section>
 
-        <section class="stop" id="stop-4">
+        <section class="stop" id="stop-4" data-track="full">
             <div class="stop-head">
                 <div class="stop-number">F4</div>
                 <div class="stop-meta">
@@ -316,7 +331,7 @@
             <div class="transition"><span class="t-tag">→</span>Now we hit the hero moment: closure-quality generation that saves directly onto the case.</div>
         </section>
 
-        <section class="stop hero" id="stop-5">
+        <section class="stop hero" id="stop-5" data-track="full">
             <div class="stop-head">
                 <div class="stop-number">F5</div>
                 <div class="stop-meta">
@@ -348,7 +363,7 @@
             <div class="transition"><span class="t-tag">→</span>With closure content ready, we shift to outbound communication quality.</div>
         </section>
 
-        <section class="stop" id="stop-6">
+        <section class="stop" id="stop-6" data-track="full">
             <div class="stop-head">
                 <div class="stop-number">F6</div>
                 <div class="stop-meta">
@@ -377,7 +392,7 @@
             <div class="transition"><span class="t-tag">→</span>Last stop: leadership visibility and operational governance.</div>
         </section>
 
-        <section class="stop" id="stop-7">
+        <section class="stop" id="stop-7" data-track="full">
             <div class="stop-head">
                 <div class="stop-number">F7</div>
                 <div class="stop-meta">
@@ -406,7 +421,7 @@
             <div class="transition"><span class="t-tag">→</span>Wrap with outcomes and handoff.</div>
         </section>
 
-        <section class="stop" id="stop-8">
+        <section class="stop" id="stop-8" data-track="full">
             <div class="stop-head">
                 <div class="stop-number">F8</div>
                 <div class="stop-meta">

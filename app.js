@@ -6,23 +6,32 @@
     const nav = document.getElementById('stopNav');
     const stopLinks = [];
 
-    stops.forEach((stop, idx) => {
-        const id = stop.id;
-        const h2 = stop.querySelector('h2').textContent;
-        const isHero = stop.classList.contains('hero');
-        const a = document.createElement('a');
-        a.href = '#' + id;
-        a.textContent = `${idx}. ${h2}`;
-        a.dataset.target = id;
-        if (isHero) a.classList.add('hero');
-        nav.appendChild(a);
-        stopLinks.push(a);
-    });
+    function visibleStops() {
+        return stops.filter((s) => !s.classList.contains('hidden-track'));
+    }
+
+    function rebuildNav() {
+        nav.innerHTML = '';
+        stopLinks.length = 0;
+        visibleStops().forEach((stop, idx) => {
+            const id = stop.id;
+            const h2 = stop.querySelector('h2').textContent;
+            const isHero = stop.classList.contains('hero');
+            const a = document.createElement('a');
+            a.href = '#' + id;
+            a.textContent = `${idx}. ${h2}`;
+            a.dataset.target = id;
+            if (isHero) a.classList.add('hero');
+            nav.appendChild(a);
+            stopLinks.push(a);
+        });
+    }
+    rebuildNav();
 
     // ============== Scroll spy ==============
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && !entry.target.classList.contains('hidden-track')) {
                 stops.forEach((s) => s.classList.remove('active'));
                 stopLinks.forEach((l) => l.classList.remove('active'));
                 entry.target.classList.add('active');
@@ -32,6 +41,38 @@
         });
     }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
     stops.forEach((s) => observer.observe(s));
+
+    // ============== Track filters ==============
+    const btnViewAll = document.getElementById('btnViewAll');
+    const btnViewExec = document.getElementById('btnViewExec');
+    const btnViewFull = document.getElementById('btnViewFull');
+
+    function setToggleActive(mode) {
+        [btnViewAll, btnViewExec, btnViewFull].forEach((b) => b.classList.remove('primary'));
+        if (mode === 'exec') btnViewExec.classList.add('primary');
+        else if (mode === 'full') btnViewFull.classList.add('primary');
+        else btnViewAll.classList.add('primary');
+    }
+
+    function applyTrackFilter(mode) {
+        stops.forEach((s) => {
+            const track = s.dataset.track || 'full';
+            const hide = mode === 'all' ? false : track !== mode;
+            s.classList.toggle('hidden-track', hide);
+            if (hide) s.classList.remove('active');
+        });
+        rebuildNav();
+        setToggleActive(mode);
+        const first = visibleStops()[0];
+        if (first) {
+            first.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        saveState();
+    }
+
+    btnViewAll.addEventListener('click', () => applyTrackFilter('all'));
+    btnViewExec.addEventListener('click', () => applyTrackFilter('exec'));
+    btnViewFull.addEventListener('click', () => applyTrackFilter('full'));
 
     // ============== Mark-done buttons ==============
     document.querySelectorAll('.done-btn').forEach((btn) => {
@@ -131,9 +172,10 @@
     });
 
     function scrollToNextStop(dir) {
-        const active = document.querySelector('.stop.active') || stops[0];
-        const idx = stops.indexOf(active);
-        const next = stops[Math.max(0, Math.min(stops.length - 1, idx + dir))];
+        const list = visibleStops();
+        const active = document.querySelector('.stop.active') || list[0];
+        const idx = list.indexOf(active);
+        const next = list[Math.max(0, Math.min(list.length - 1, idx + dir))];
         if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
@@ -145,6 +187,9 @@
     function saveState() {
         const state = {
             done: stops.filter((s) => s.classList.contains('done')).map((s) => s.id),
+            filterMode: btnViewExec.classList.contains('primary')
+                ? 'exec'
+                : (btnViewFull.classList.contains('primary') ? 'full' : 'all'),
             checks: Array.from(document.querySelectorAll('.checklist input[type="checkbox"]'))
                 .map((cb, i) => (cb.checked ? i : null))
                 .filter((v) => v !== null),
@@ -157,6 +202,7 @@
             const raw = localStorage.getItem(STATE_KEY);
             if (!raw) return;
             const state = JSON.parse(raw);
+            applyTrackFilter(state.filterMode || 'all');
             (state.done || []).forEach((id) => {
                 const stop = document.getElementById(id);
                 if (!stop) return;
@@ -178,6 +224,9 @@
     });
 
     loadState();
+    if (!localStorage.getItem(STATE_KEY)) {
+        applyTrackFilter('all');
+    }
 
     // ============== Reset button for state ==============
     // Add a small reset link at the bottom of the sidebar

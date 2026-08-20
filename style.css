@@ -132,6 +132,11 @@ body {
     top: 62px;
     z-index: 9;
 }
+.view-toggle {
+    padding: 10px 24px 0;
+    display: flex;
+    gap: 8px;
+}
 .stopnav a {
     color: var(--ink-dim);
     text-decoration: none;
@@ -169,6 +174,7 @@ body {
 }
 .stop.active { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(43,127,255,0.15); }
 .stop.done { opacity: 0.6; }
+.stop.hidden-track { display: none; }
 .stop.hero { border-color: var(--hero); }
 .stop.hero.active { box-shadow: 0 0 0 3px rgba(255,184,77,0.15); }
 
@@ -229,6 +235,13 @@ body {
 }
 .say p { margin: 0 0 8px; }
 .say p:last-child { margin: 0; }
+.pause-cue {
+    font-size: 11px;
+    letter-spacing: 0.6px;
+    color: var(--hero);
+    font-weight: 700;
+    text-transform: uppercase;
+}
 .say.handoff {
     background: rgba(255,184,77,0.08);
     border-left-color: var(--hero);
