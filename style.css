@@ -120,22 +120,28 @@ body {
 .btn.done-btn.done { background: var(--do); border-color: var(--do); color: #0b1220; }
 
 /* ========== Stop navigation ========== */
-.stopnav {
+.controls-bar {
     grid-area: nav;
-    display: flex;
-    gap: 6px;
-    padding: 12px 24px;
-    background: var(--panel);
-    border-bottom: 1px solid var(--border);
-    overflow-x: auto;
     position: sticky;
     top: 62px;
     z-index: 9;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+}
+.stopnav {
+    display: flex;
+    gap: 6px;
+    padding: 10px 24px 12px;
+    background: transparent;
+    border-bottom: none;
+    overflow-x: auto;
+    position: static;
 }
 .view-toggle {
     padding: 10px 24px 0;
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
 }
 .exec-summary {
     margin: 10px 24px 0;
@@ -424,7 +430,7 @@ code {
         grid-template-areas: "top" "nav" "main" "side";
     }
     .sidebar { border-left: none; border-top: 1px solid var(--border); padding: 24px; }
-    .stopnav { top: 62px; }
+    .controls-bar { top: 62px; }
 }
 
 @media (max-width: 620px) {
