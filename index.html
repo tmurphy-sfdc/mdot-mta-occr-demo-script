@@ -26,34 +26,140 @@
     <nav class="stopnav" id="stopNav"></nav>
 
     <main class="stops">
-        <section class="stop" id="exec-script">
+        <section class="stop" id="exec-0">
             <div class="stop-head">
-                <div class="stop-number">E</div>
+                <div class="stop-number">E0</div>
                 <div class="stop-meta">
-                    <h2>5-Minute Executive Run (Fast Path)</h2>
-                    <div class="stop-time"><strong>Duration:</strong> 5:00 | <strong>Cumulative:</strong> 5:00</div>
+                    <h2>Executive 0: What We Heard</h2>
+                    <div class="stop-time"><strong>Duration:</strong> 0:30 | <strong>Cumulative:</strong> 0:30</div>
                 </div>
-                <button class="btn done-btn" data-target="exec-script">Mark done</button>
+                <button class="btn done-btn" data-target="exec-0">Mark done</button>
             </div>
-
-            <div class="do critical">
-                <span class="do-tag">DO ✱</span>
+            <div class="do">
+                <span class="do-tag">DO</span>
                 <div>
-                    <p>Use this sequence for executive audiences:</p>
+                    <p>Open "What we heard" slide and quickly call out: fragmented systems, manual intake, manual routing, closure visibility gap.</p>
+                </div>
+            </div>
+            <div class="say">
+                <p>Today we're solving a connected workflow problem: fragmented tools, manual intake, and uneven closure operations. The outcome target is faster, more consistent rider resolution with system-level accountability.</p>
+            </div>
+            <div class="transition"><span class="t-tag">→</span>Show the rider-facing front door and transparency model.</div>
+        </section>
+
+        <section class="stop" id="exec-1">
+            <div class="stop-head">
+                <div class="stop-number">E1</div>
+                <div class="stop-meta">
+                    <h2>Executive 1: Self-Service + Status</h2>
+                    <div class="stop-time"><strong>Duration:</strong> 0:50 | <strong>Cumulative:</strong> 1:20</div>
+                </div>
+                <button class="btn done-btn" data-target="exec-1">Mark done</button>
+            </div>
+            <div class="do">
+                <span class="do-tag">DO</span>
+                <div>
+                    <p>Show intake entry and status lookup using:</p>
                     <ul>
-                        <li>0:00-0:30: What we heard (fragmented systems, manual intake, manual routing, closure reporting gap).</li>
-                        <li>0:30-1:20: Self-service portal and secure status check (`00002125`, `Gerald.Johnson@example.com`).</li>
-                        <li>1:20-2:20: Priya phone intake over voice channel (Omni screen pop + guided intake + Cut Report Insight).</li>
-                        <li>2:20-3:40: Case `00002503` closure brief generation and save-back to case.</li>
-                        <li>3:40-4:40: Review &amp; Send Closure Email flow with clean formatting and send-now toggle.</li>
-                        <li>4:40-5:00: Leadership outcomes and handoff to Saul.</li>
+                        <li>Feedback ID: <code>00002125</code></li>
+                        <li>Email: <code>Gerald.Johnson@example.com</code></li>
                     </ul>
                 </div>
             </div>
+            <div class="say">
+                <p>Riders can submit structured feedback and securely check status without calling in. That improves trust and reduces avoidable contact volume.</p>
+            </div>
+            <div class="transition"><span class="t-tag">→</span>Shift to the voice-channel path, which is a core part of your target-state architecture.</div>
+        </section>
 
+        <section class="stop" id="exec-2">
+            <div class="stop-head">
+                <div class="stop-number">E2</div>
+                <div class="stop-meta">
+                    <h2>Executive 2: Priya Phone Intake (Voice Integration)</h2>
+                    <div class="stop-time"><strong>Duration:</strong> 1:00 | <strong>Cumulative:</strong> 2:20</div>
+                </div>
+                <button class="btn done-btn" data-target="exec-2">Mark done</button>
+            </div>
+            <div class="do critical">
+                <span class="do-tag">DO ✱</span>
+                <div>
+                    <p>Show inbound call screen pop and guided intake with Route 29 + time + block/stop + Cut Report Insight.</p>
+                </div>
+            </div>
+            <div class="say">
+                <p>This is the phone-channel proof point: voice interaction, guided intake, and operational context all in one workflow while the rider is still on the call.</p>
+            </div>
+            <div class="transition"><span class="t-tag">→</span>Move directly to closure quality on the target case.</div>
+        </section>
+
+        <section class="stop hero" id="exec-3">
+            <div class="stop-head">
+                <div class="stop-number">E3</div>
+                <div class="stop-meta">
+                    <h2>Executive 3: Generate Closure Brief on <code>00002503</code><span class="hero-tag">HERO</span></h2>
+                    <div class="stop-time"><strong>Duration:</strong> 1:20 | <strong>Cumulative:</strong> 3:40</div>
+                </div>
+                <button class="btn done-btn" data-target="exec-3">Mark done</button>
+            </div>
+            <div class="do critical">
+                <span class="do-tag">DO ✱</span>
+                <div>
+                    <p>Launch <code>Generate Closure Brief</code>, show regenerated content, save, and confirm values persist on the case.</p>
+                </div>
+            </div>
+            <div class="say">
+                <p>Closure language is regenerated from current evidence, edited in place, and saved back to the case. That turns closure quality into a repeatable, auditable process.</p>
+            </div>
+            <div class="transition"><span class="t-tag">→</span>Show outbound communication consistency.</div>
+        </section>
+
+        <section class="stop" id="exec-4">
+            <div class="stop-head">
+                <div class="stop-number">E4</div>
+                <div class="stop-meta">
+                    <h2>Executive 4: Review &amp; Send Closure Email</h2>
+                    <div class="stop-time"><strong>Duration:</strong> 1:00 | <strong>Cumulative:</strong> 4:40</div>
+                </div>
+                <button class="btn done-btn" data-target="exec-4">Mark done</button>
+            </div>
+            <div class="do">
+                <span class="do-tag">DO</span>
+                <div>
+                    <p>Open <code>Review &amp; Send Closure Email</code>, show clean formatted body/preview and send-now toggle.</p>
+                </div>
+            </div>
+            <div class="say">
+                <p>Teams can send branded, consistent closure communication with human review in the loop, and the draft stays tied to the case record.</p>
+            </div>
+            <div class="transition"><span class="t-tag">→</span>Finish with leadership value and handoff.</div>
+        </section>
+
+        <section class="stop" id="exec-5">
+            <div class="stop-head">
+                <div class="stop-number">E5</div>
+                <div class="stop-meta">
+                    <h2>Executive 5: Outcomes + Handoff to Saul</h2>
+                    <div class="stop-time"><strong>Duration:</strong> 0:20 | <strong>Cumulative:</strong> 5:00</div>
+                </div>
+                <button class="btn done-btn" data-target="exec-5">Mark done</button>
+            </div>
             <div class="say handoff">
-                <p>So for the executive version, I keep this really tight around outcomes. We start with what you told us is painful today, we show how voice intake and self-service now land in one record path, and then we close on proof that resolution quality and customer communication are now system-led and auditable. This framing sets up the full walkthrough cleanly.</p>
-                <p><strong>Payoff:</strong> <strong>One connected rider-to-resolution workflow, not a collection of disconnected steps.</strong></p>
+                <p>You just saw a connected rider-to-resolution workflow across self-service, voice intake, investigation context, closure quality, and customer communication. Next is implementation sequencing and rollout planning with Saul.</p>
+            </div>
+        </section>
+
+        <section class="stop" id="full-intro">
+            <div class="stop-head">
+                <div class="stop-number">F</div>
+                <div class="stop-meta">
+                    <h2>Full-Length Demo Starts Here (15:00 Track)</h2>
+                    <div class="stop-time"><strong>Duration:</strong> 0:00 | <strong>Cumulative:</strong> 0:00</div>
+                </div>
+                <button class="btn done-btn" data-target="full-intro">Mark done</button>
+            </div>
+            <div class="say">
+                <p>The next blocks are the full-length operational walkthrough. Use these when you are running the complete narrative, not the executive fast path.</p>
             </div>
         </section>
 
